@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 
 const Index = () => {
   const [prompt, setPrompt] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
   
@@ -23,6 +24,8 @@ const Index = () => {
       });
       return;
     }
+    
+    setIsLoading(true);
     
     // Store prompt in localStorage to pass between pages
     localStorage.setItem('userPrompt', prompt);
@@ -86,10 +89,11 @@ const Index = () => {
               <Button 
                 onClick={handleSendPrompt} 
                 size="lg" 
+                disabled={isLoading}
                 className="gap-2 px-8 rounded-full transition-all hover:scale-105 hover:shadow-lg bg-gradient-to-r from-primary to-blue-500 hover:shadow-primary/20"
               >
                 <Send className="h-5 w-5" />
-                Generate Code
+                {isLoading ? "Processing..." : "Generate Code"}
               </Button>
             </div>
           </motion.div>

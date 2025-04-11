@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
-import { Send, Copy, ArrowLeft } from 'lucide-react';
+import { Copy, ArrowLeft } from 'lucide-react';
 import CodeDisplay from '@/components/CodeDisplay';
 import PromptInput from '@/components/PromptInput';
 import LoadingSpinner from '@/components/LoadingSpinner';
@@ -51,7 +51,7 @@ const CodeGeneration = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer <YOUR_APPLICATION_TOKEN>'
+          'Authorization': 'Bearer AstraCS:wUMIrIgbCfaWNCKDJrUuQBDs:27c8c5e25823ad5e0f1a45eaf806243125a278417cd2b3726944c13069e3c059'
         },
         body: JSON.stringify(payload)
       };
@@ -60,7 +60,7 @@ const CodeGeneration = () => {
       // In a real implementation, you would uncomment the actual fetch call
       /*
       const response = await fetch(
-        'https://api.langflow.astra.datastax.com/lf/adb64f11-3dfe-400f-89b1-1a84912bca1c/api/v1/run/a314d065-4b76-403e-ae33-893be65cda37',
+        'https://api.langflow.astra.datastax.com/lf/adb64f11-3dfe-400f-89b1-1a84912bca1c/api/v1/run/59530d4d-f5d2-43aa-87b2-f096387a063e',
         options
       );
       
@@ -182,7 +182,7 @@ fun PreviewAppScreen() {
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       
-      <main className="flex-1 flex flex-col p-4 sm:p-6 max-w-7xl mx-auto w-full">
+      <main className="flex-1 flex flex-col p-4 sm:p-6 max-w-4xl mx-auto w-full">
         <div className="mb-6 flex items-center">
           <Button 
             variant="outline" 
@@ -195,49 +195,40 @@ fun PreviewAppScreen() {
           <h1 className="text-2xl font-bold">Your Generated Code</h1>
         </div>
         
-        <div className="flex flex-col lg:flex-row gap-6 flex-1">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="flex-1 flex flex-col"
-          >
-            <div className="bg-card p-4 rounded-lg shadow-sm border flex-1 flex flex-col">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg font-medium">Code Output</h2>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={handleCopyCode}
-                  disabled={!generatedCode || isLoading}
-                  className="gap-1"
-                >
-                  <Copy className="h-4 w-4" />
-                  Copy
-                </Button>
-              </div>
-              
-              <div className="flex-1 overflow-hidden">
-                {isLoading ? (
-                  <div className="h-full flex items-center justify-center">
-                    <LoadingSpinner />
-                  </div>
-                ) : (
-                  <CodeDisplay code={generatedCode} />
-                )}
-              </div>
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex-1 flex flex-col"
+        >
+          <div className="bg-card p-4 rounded-lg shadow-sm border flex-1 flex flex-col mb-6">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-medium">Code Output</h2>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleCopyCode}
+                disabled={!generatedCode || isLoading}
+                className="gap-1"
+              >
+                <Copy className="h-4 w-4" />
+                Copy
+              </Button>
             </div>
-          </motion.div>
+            
+            <div className="flex-1 overflow-hidden">
+              {isLoading ? (
+                <div className="h-full flex items-center justify-center">
+                  <LoadingSpinner />
+                </div>
+              ) : (
+                <CodeDisplay code={generatedCode} />
+              )}
+            </div>
+          </div>
           
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="w-full lg:w-96"
-          >
+          <div className="w-full">
             <div className="bg-card p-4 rounded-lg shadow-sm border">
-              <h2 className="text-lg font-medium mb-4">Refinement</h2>
-              
               <div className="mb-4">
                 <p className="text-sm text-muted-foreground mb-2">Initial prompt:</p>
                 <div className="bg-muted/50 rounded p-2 text-sm">
@@ -262,12 +253,12 @@ fun PreviewAppScreen() {
                 disabled={isLoading}
                 className="w-full mt-4 gap-2"
               >
-                {isLoading ? <LoadingSpinner size="sm" /> : <Send className="h-4 w-4" />}
+                {isLoading ? <LoadingSpinner size="sm" /> : null}
                 {isLoading ? "Generating..." : "Refine Code"}
               </Button>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </main>
     </div>
   );
