@@ -38,7 +38,7 @@ const CodeDisplay: React.FC<CodeDisplayProps> = ({ code }) => {
         </SyntaxHighlighter>
       ) : (
         <div className="h-full flex items-center justify-center text-muted-foreground bg-background/50 rounded-lg p-6 border-2 border-dashed">
-          Enter a prompt to generate code.
+          Generating code...
         </div>
       )}
     </motion.div>
