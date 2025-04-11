@@ -11,7 +11,6 @@ import { motion } from 'framer-motion';
 
 const Index = () => {
   const [prompt, setPrompt] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
   
@@ -24,8 +23,6 @@ const Index = () => {
       });
       return;
     }
-    
-    setIsLoading(true);
     
     // Store prompt in localStorage to pass between pages
     localStorage.setItem('userPrompt', prompt);
@@ -50,11 +47,8 @@ const Index = () => {
               App Genesis
             </h1>
             
-            <div className="h-12 mb-8">
-              <AnimatedText 
-                text="Transform Your Ideas Into Production-Ready Code with AI" 
-                className="text-lg md:text-xl lg:text-2xl text-muted-foreground bg-clip-text text-transparent bg-gradient-to-r from-secondary-foreground to-primary/70" 
-              />
+            <div className="h-12 mb-6">
+              <AnimatedText text="Transform Your Ideas Into Production-Ready Code with AI" className="text-lg md:text-xl text-muted-foreground" />
             </div>
             
             <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
@@ -89,11 +83,10 @@ const Index = () => {
               <Button 
                 onClick={handleSendPrompt} 
                 size="lg" 
-                disabled={isLoading}
-                className="gap-2 px-8 rounded-full transition-all hover:scale-105 hover:shadow-lg bg-gradient-to-r from-primary to-blue-500 hover:shadow-primary/20"
+                className="gap-2 px-8 rounded-full transition-all hover:shadow-lg bg-gradient-to-r from-primary to-blue-500 hover:from-blue-600 hover:to-primary"
               >
                 <Send className="h-5 w-5" />
-                {isLoading ? "Processing..." : "Generate Code"}
+                Generate Code
               </Button>
             </div>
           </motion.div>

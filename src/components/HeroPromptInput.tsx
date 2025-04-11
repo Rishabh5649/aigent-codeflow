@@ -33,16 +33,8 @@ const HeroPromptInput: React.FC<HeroPromptInputProps> = ({
           onChange={onChange}
           onKeyDown={onKeyDown}
           placeholder="Describe what you want to build..."
-          className="min-h-32 p-4 text-base resize-none rounded-xl border-2 focus-visible:ring-2 focus-visible:ring-primary/50 shadow-md hover:shadow-lg transition-all duration-300 hover:border-primary/30"
+          className="min-h-32 p-4 text-base resize-none rounded-xl border-2 focus-visible:ring-2 focus-visible:ring-primary/50 shadow-sm"
         />
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ delay: 1, duration: 0.5 }}
-          className="absolute bottom-3 right-3 text-xs text-muted-foreground"
-        >
-          Press Enter to generate code
-        </motion.div>
       </div>
       
       <div className="mt-4">
@@ -55,7 +47,7 @@ const HeroPromptInput: React.FC<HeroPromptInputProps> = ({
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * index, duration: 0.3 }}
               onClick={() => handleExampleClick(example)}
-              className="text-sm px-3 py-1.5 rounded-full bg-secondary hover:bg-secondary/80 text-secondary-foreground transition-colors shadow-sm hover:shadow-md"
+              className="text-sm px-3 py-1.5 rounded-full bg-secondary hover:bg-secondary/80 text-secondary-foreground transition-colors"
             >
               {example}
             </motion.button>
