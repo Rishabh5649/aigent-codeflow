@@ -16,7 +16,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = "" }) => 
       const timeout = setTimeout(() => {
         setTypedText(prev => prev + text[currentIndex]);
         setCurrentIndex(prevIndex => prevIndex + 1);
-      }, 40); // Adjust typing speed here
+      }, 50); // Slightly slower typing for better readability
       
       return () => clearTimeout(timeout);
     }
@@ -34,6 +34,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = "" }) => 
         <motion.span 
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 0.8, repeat: Infinity }}
+          className="text-primary"
         >
           |
         </motion.span>
