@@ -47,8 +47,11 @@ const Index = () => {
               App Genesis
             </h1>
             
-            <div className="h-12 mb-6">
-              <AnimatedText text="Transform Your Ideas Into Production-Ready Code with AI" className="text-lg md:text-xl text-muted-foreground" />
+            <div className="h-12 mb-8">
+              <AnimatedText 
+                text="Transform Your Ideas Into Production-Ready Code with AI" 
+                className="text-lg md:text-xl lg:text-2xl text-muted-foreground bg-clip-text text-transparent bg-gradient-to-r from-secondary-foreground to-primary/70" 
+              />
             </div>
             
             <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
@@ -83,7 +86,7 @@ const Index = () => {
               <Button 
                 onClick={handleSendPrompt} 
                 size="lg" 
-                className="gap-2 px-8 rounded-full transition-all hover:shadow-lg bg-gradient-to-r from-primary to-blue-500 hover:from-blue-600 hover:to-primary"
+                className="gap-2 px-8 rounded-full transition-all hover:scale-105 hover:shadow-lg bg-gradient-to-r from-primary to-blue-500 hover:shadow-primary/20"
               >
                 <Send className="h-5 w-5" />
                 Generate Code

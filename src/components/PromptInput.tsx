@@ -22,7 +22,7 @@ const PromptInput: React.FC<PromptInputProps> = ({
         onChange={onChange}
         onKeyDown={onKeyDown}
         placeholder={placeholder}
-        className="min-h-24 resize-none"
+        className="min-h-24 resize-none rounded-xl border-2 focus-visible:ring-2 focus-visible:ring-primary/50 shadow-sm transition-all duration-300 hover:border-primary/30"
       />
     </div>
   );
